@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Show Grade Client",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://tyler.caraza-harter.com/cs301/fall18/code_review.html?project_id=*&submitter_id=*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "browser_action": {
+  "default_icon": "icon.png"
+  },
+  "permissions": [
+    "tabs",
+    "<all_urls>"
+  ],
+  "background": {
+  "scripts": ["background.js"]
+  }
+}
