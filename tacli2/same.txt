@@ -1,0 +1,15 @@
+If you have the code look like this:
+if <expression>:
+    ...
+    [[code]]
+else:
+    ...
+    [[code]]
+You can change your code to:
+if <expression>:
+    ...
+else:
+    ...
+[[code]]
+
+Because you will always run your [[code]] no matter if branch is True or False.

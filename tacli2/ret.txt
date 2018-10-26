@@ -1,0 +1,8 @@
+You don't need to write code like this:
+if <expression>:
+    return True
+else:
+    return False
+
+You can directly:
+return <expression>

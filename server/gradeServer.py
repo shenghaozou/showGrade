@@ -2,6 +2,9 @@ import base64, boto3, botocore, logging, os, sys, json
 from flask import Flask
 from flask_cors import CORS
 
+os.putenv('LANG', 'en_US.UTF-8')
+os.putenv('LC_ALL', 'en_US.UTF-8')
+
 logging.basicConfig(
     handlers=[
         logging.FileHandler("gradeServer.log"),

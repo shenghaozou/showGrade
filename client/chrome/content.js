@@ -5,7 +5,8 @@ chrome.runtime.onMessage.addListener(
       var groups = location.href.match(regex);
       var xmlHttp = new XMLHttpRequest();
       var theUrl = "http://127.0.0.1:5000/" + groups[1] + "/" + groups[2]
-      xmlHttp.open("GET", theUrl, false);
+      console.log(theUrl)
+      xmlHttp.open("GET", theUrl, true);
       xmlHttp.send();
       var result = JSON.parse(xmlHttp.responseText);
       document.getElementById("useremail").innerHTML = result["detail"];

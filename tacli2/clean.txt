@@ -1,0 +1,18 @@
+You didn't get full credits because of data cleaning challenge.
+
+Think about what kind of dirty data we should process:
+
+e.g. "David Page"
+
+dirty data can be:
+" David Page"
+"David  Page"
+"david page"
+" David   PAGE    "
+
+You can use:
+1. .strip() to clean the extra spaces at the beginning and the end.
+2. replace("  ", " ") (make sure you can process the data such as "David     Page") to clean the extra spaces
+3. .lower() / .upper() to unify the case.
+
+You can also think about other solutions.

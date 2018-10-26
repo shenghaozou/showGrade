@@ -1,0 +1,31 @@
+Please make sure you understand:
+
+In Python, "", None, [] are considered as False when you use them in the logical expression.  "a", 1, 1.2, [1, 2]... are considered as True.
+
+Please read the good answer from stackoverflow:
+https://stackoverflow.com/questions/19213535/using-and-and-or-operator-with-python-strings
+
+Python considers empty strings as having boolean value of "false" and non-empty strings as having boolean value of "true".
+
+So there're only two possible outcomes of the expression, i.e. for empty string and for non-empty string.
+
+Second thing to notice is that which value of "or" and "and" operator are returned. Python does not return just true or false value, for strings and or/and operator it returns one of the strings (considering they have value of true or false). Python uses lazy approach:
+
+For "and" operator if left value is true, then right value is checked and returned. if left value is false, then it is returned
+
+For "or" operator if first value is true, then it is returned. otherwise if second value is false, then second value is returned
+
+Some examples:
+>>> "A" and "a"
+'a'
+>>> "A" or "a"
+'A'
+>>> x = 0
+>>> x == 1 or "a"
+'a'
+>>> "a" or x == 1
+'a'
+>>> "f" and "" or "F"
+'F'
+
+Please let me know if you still have questions.

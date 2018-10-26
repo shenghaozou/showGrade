@@ -1,0 +1,1 @@
+Please don't use a,b,c,... as variable names. You can use c to represent counter but please make sure your variable name is meaningful so it won't be confusing when you work with others in the future.

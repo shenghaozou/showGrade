@@ -1,0 +1,9 @@
+Please don't write code like this:
+if <expression>:
+    <do nothing>
+else:
+    ... (real code here)
+
+You can avoid the else block by:
+if not <expression>:
+    ... (real code here)
