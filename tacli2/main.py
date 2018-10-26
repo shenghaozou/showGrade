@@ -3,6 +3,7 @@ import pyperclip, subprocess
 KEY_PAT = re.compile("\[\[(.*?)(:.*?)?\]\]")
 data = {}
 index2key = []
+os.chdir("data")
 
 def load(fileName):
     print("loading {}".format(fileName))
@@ -55,34 +56,38 @@ def cb(k):
     pyperclip.copy(curStr)
     print("Copied to Clipboard!")
 
+def runCommand(r):
+    if r == "loadall" or r == "la":
+        loadAll()
+    elif r == "ls":
+        list()
+    elif r in data:
+        print("find keyword in data.")
+        cb(r)
+    elif r.isdigit():
+        print("try to process the index.")
+        n = int(r)
+        if n < len(index2key):
+            cb(index2key[n])
+    elif r == "touch":
+        fn = input("file name(w/o txt): ").strip() + ".txt"
+        subprocess.call(['vim', fn])
+        load(fn)
+        print("Success!")
+    elif r == "rm":
+        key = input("file name(w/o txt): ").strip()
+        fn =  key + ".txt"
+        if os.path.exists(fn):
+            os.remove(fn)
+            del data[key]
+        else:
+            print("file not exist")
+    elif r == "q" or r == "quit":
+        break
+    else:
+        print("invalid input.")
 if __name__ == "__main__":
     loadAll()
     while True:
         r = input("> ").strip()
-        if r == "loadall":
-            loadAll()
-        elif r == "ls":
-            list()
-        elif r in data:
-            print("find keyword in data.")
-            cb(r)
-        elif r.isdigit():
-            print("try to process the index.")
-            n = int(r)
-            if n < len(index2key):
-                cb(index2key[n])
-        elif r == "touch":
-            fn = input("file name(w/o txt): ").strip() + ".txt"
-            subprocess.call(['vim', fn])
-            load(fn)
-            print("Success!")
-        elif r == "rm":
-            key = input("file name(w/o txt): ").strip()
-            fn =  key + ".txt"
-            if os.path.exists(fn):
-                os.remove(fn)
-                del data[key]
-            else:
-                print("file not exist")
-        elif r == "quit":
-            break
+        runCommand(r)
